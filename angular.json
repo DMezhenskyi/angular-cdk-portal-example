@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "angular-cdk-portal-example"
+  "defaultProject": "angular-cdk-portal-example",
+  "cli": {
+    "analytics": false
+  }
 }
