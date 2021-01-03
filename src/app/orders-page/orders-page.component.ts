@@ -1,3 +1,4 @@
+import { ActionsService } from './../actions.service';
 import { Component, OnInit } from '@angular/core';
 
 export interface Order {
@@ -24,9 +25,10 @@ export class OrdersPageComponent implements OnInit {
   dataSource = ORDERS_DATA;
 
 
-  constructor() { }
+  constructor(private actions: ActionsService) { }
 
   ngOnInit(): void {
+    this.actions.switchContext('orders');
   }
 
 }

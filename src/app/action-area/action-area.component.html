@@ -1,0 +1,16 @@
+<ng-container [ngSwitch]="actions.context | async">
+  <ng-container *ngSwitchCase="'users'">
+    <button (click)="actions.onAddNewItem$.next()" mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-container>
+  <ng-container *ngSwitchCase="'orders'">
+    <button (click)="actions.onAddNewItem$.next()" mat-fab color="primary">
+      <mat-icon>map</mat-icon>
+    </button>
+    <button (click)="actions.onSearch$.next()" mat-fab color="primary" style="margin-top: 15px;">
+      <mat-icon>search</mat-icon>
+    </button>
+  </ng-container>
+  <div *ngSwitchDefault>no actions</div>
+</ng-container>

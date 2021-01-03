@@ -1,4 +1,7 @@
+import { ActionsService } from './../actions.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 
 export interface User {
   name: string;
@@ -23,9 +26,16 @@ export class UsersPageComponent implements OnInit {
   displayedColumns: string[] = ['name', 'lastName', 'profession'];
   dataSource = USER_DATA;
 
-  constructor() { }
+  addNew$: Observable<boolean>;
+
+  constructor(private actions: ActionsService) { }
 
   ngOnInit(): void {
+    this.actions.switchContext('users');
+    this.addNew$ = this.actions.onAddNewItem$.pipe(mapTo(true))
+    this.actions.onDelete$.subscribe(
+      () => console.log('Handle delete user ...')
+    );
   }
 
 }

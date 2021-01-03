@@ -1,3 +1,4 @@
+import { ActionsService } from './../actions.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActionAreaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public actions: ActionsService) { }
 
   ngOnInit(): void {
   }

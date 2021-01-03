@@ -1,3 +1,18 @@
+<form *ngIf="addNew$ | async" class="mat-elevation-z1">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput name="none" />
+  </mat-form-field>
+  <mat-form-field style="margin-left: 15px;">
+    <mat-label>Last Name</mat-label>
+    <input matInput name="none" />
+  </mat-form-field>
+  <mat-form-field style="margin-left: 15px;">
+    <mat-label>Profession</mat-label>
+    <input matInput name="none" />
+  </mat-form-field>
+  <button mat-stroked-button style="margin-left: 15px;">Add</button>
+</form>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 table">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
