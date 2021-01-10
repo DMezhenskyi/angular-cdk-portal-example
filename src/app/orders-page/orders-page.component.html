@@ -15,3 +15,12 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<ng-container *cdkPortal>
+  <button mat-fab color="accent" class="search">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-fab color="accent">
+    <mat-icon>map</mat-icon>
+  </button>
+</ng-container>

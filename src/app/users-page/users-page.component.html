@@ -1,3 +1,20 @@
+<form *ngIf="showForm">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Enter name..." type="text">
+  </mat-form-field>
+  <mat-form-field class="space-left">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Enter last name..." type="text">
+  </mat-form-field>
+  <mat-form-field class="space-left">
+    <mat-label>Profession</mat-label>
+    <input matInput placeholder="Enter profession..." type="text">
+  </mat-form-field>
+  <button class="space-left" mat-raised-button>Save</button>
+  <button class="space-left" mat-button (click)="showForm = false">cancel</button>
+</form>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 table">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -15,3 +32,9 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<ng-container *cdkPortal>
+  <button mat-fab color="accent" (click)="showForm = true">
+    <mat-icon>add</mat-icon>
+  </button>
+</ng-container>
