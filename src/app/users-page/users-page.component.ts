@@ -1,6 +1,7 @@
-import { CdkPortal } from '@angular/cdk/portal';
+import { ComponentPortal } from '@angular/cdk/portal';
 import { PortalBridgeService } from './../portal-bridge.service';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActionsButtonsComponent } from '../actions-buttons/actions-buttons.component';
 export interface User {
   name: string;
   lastName: string;
@@ -18,17 +19,17 @@ const USER_DATA: User[] = [
   styleUrls: ['./users-page.component.scss'],
 })
 export class UsersPageComponent implements OnInit, OnDestroy {
-  @ViewChild(CdkPortal, { static: true })
-  portalContent: CdkPortal;
+  portalContent: ComponentPortal<ActionsButtonsComponent>;
 
   displayedColumns: string[] = ['name', 'lastName', 'profession'];
   dataSource = USER_DATA;
 
-  showForm = false;
-
   constructor(private portalBridge: PortalBridgeService) {}
 
   ngOnInit(): void {
+    this.portalContent = new ComponentPortal<ActionsButtonsComponent>(
+      ActionsButtonsComponent
+    );
     this.portalBridge.setPortal(this.portalContent);
   }
   ngOnDestroy() {
