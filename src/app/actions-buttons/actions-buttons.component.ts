@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DATA_TOKEN } from '../data.token';
 
 @Component({
   selector: 'app-actions-buttons',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./actions-buttons.component.scss'],
 })
 export class ActionsButtonsComponent implements OnInit {
-  constructor() {}
+  constructor(@Inject(DATA_TOKEN) private data: string) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.data);
+  }
 }

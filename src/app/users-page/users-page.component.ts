@@ -1,7 +1,8 @@
 import { ComponentPortal } from '@angular/cdk/portal';
 import { PortalBridgeService } from './../portal-bridge.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { ActionsButtonsComponent } from '../actions-buttons/actions-buttons.component';
+import { DATA_TOKEN } from '../data.token';
 export interface User {
   name: string;
   lastName: string;
@@ -27,8 +28,13 @@ export class UsersPageComponent implements OnInit, OnDestroy {
   constructor(private portalBridge: PortalBridgeService) {}
 
   ngOnInit(): void {
+    const portalInjector = Injector.create({
+      providers: [{ provide: DATA_TOKEN, useValue: 'Hello from Portal' }],
+    });
     this.portalContent = new ComponentPortal<ActionsButtonsComponent>(
-      ActionsButtonsComponent
+      ActionsButtonsComponent,
+      null,
+      portalInjector
     );
     this.portalBridge.setPortal(this.portalContent);
   }
